@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+
     // 생성자 호출
     public HomeController() {
         System.out.println("HomeController 생성자 생성됨! 근데 내가 생성한 건 아님");
