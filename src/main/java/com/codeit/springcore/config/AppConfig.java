@@ -1,44 +1,15 @@
 package com.codeit.springcore.config;
 
 import com.codeit.springcore.chap03.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-// 객체 생성의 제어권을 모두 이 클래스에 작성할 것임.
+@Configuration  // 이 클래스는 Bean을 등록하기 위한 섫정정 클래스야.
+// 지정한 패키지 내에 있는 @Component 어노테이션이 붙은 객체를 모두 스캔해서 Bean으로 등록 시키겠다.
+@ComponentScan(basePackages ="com.codeit.springcore.chap04") // 이 패키지 안에서 @Component 어노테이션이 붙은 클래스를 찾아서 Bean으로 등록해줘.
+
 public class AppConfig {
 
-    // 쉐프 객체 생성
-    public Chef chef01() {
-        return new KimChef();
-
-    }
-
-    public Chef chef02() {
-        return new JohnChef();
-
-    }
-
-    // 코스요리 객체 생성
-    public Course course01() {
-        return new SushiCourse();
-    }
-    public Course course02() {
-        return new WesternCourse();
-    }
-
-    // 레스토랑 객체 생성
-    public Restaurant restaurant01() {
-        return new AsianRestaurant(chef01(),course01());
-    }
-
-    public Restaurant restaurant02() {
-        return new WesternRestaurant(chef02(),course02());
-    }
-
-    // 호텔 객체 생성
-    public Hotel hotel() {
-        return new Hotel(restaurant01(), chef01()); // 매개변수를 바꿔가며 테스트 해보면 아시안 > 웨스턴 된다
-    }
-
-
-
+    // 추가적으로 등록할 Bean이 있다면 메서드의 리턴 방식으로 Bean 등록 가능.
 
 }
