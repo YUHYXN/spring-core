@@ -2,8 +2,9 @@ package com.codeit.springcore;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+@Controller // 컨트롤러 역할을 하는 Bean 등록을 하겠다. Component랑 똑같은데, 이름으로 역할을 구분
 public class HomeController {
 
 
@@ -18,8 +19,9 @@ public class HomeController {
 
     // Method 선언
     @GetMapping("/hello")   /// hello라는 객체가 들어오면 home()을 호출해줘
-    public String home() {
-        System.out.println("서버에 요청이 들어왔다.");
+    @ResponseBody   // 반환되는 값을 View 이름이 아니라, 응답 본문으로 사용하겠다.
+    public String home(String name) {   // name이라는 매개 변수 받아올 수 있음  parameter
+        System.out.println("서버에 요청이 들어왔다.");    // 인수는 argument << 매개 값 << 매개 값을 받아주는게 파라미터 매개 변수
         return "home";  // home.html을 찾아서 반환해줘(열고자 하는 파일명이다.) - template 폴더 안에서 찾음
     }
 
